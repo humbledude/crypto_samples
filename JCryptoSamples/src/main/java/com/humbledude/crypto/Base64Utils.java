@@ -7,8 +7,12 @@ import org.apache.commons.codec.binary.Base64;
  */
 public class Base64Utils {
 
-  public static String toBase64String(byte[] bytes) {
+  public static String toBase64Str(byte[] bytes) {
     byte[] byteArray = Base64.encodeBase64(bytes);
     return new String(byteArray);
+  }
+
+  public static byte[] fromBase64Str(String str) {
+    return Base64.decodeBase64(str);
   }
 }

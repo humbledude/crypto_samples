@@ -22,18 +22,26 @@ public class App {
 
   private static void test(CryptoBase cryptoBase, String key, String message) {
     System.out.println("ALGORITHM : " + cryptoBase.getAlgorithm());
+
+    // encrypt it
     byte[] encrypted = cryptoBase.encrypt(key, message.getBytes());
+    String base64Str = null;
     if (encrypted != null) {
-      System.out.println(Base64Utils.toBase64String(encrypted));
+      base64Str = Base64Utils.toBase64Str(encrypted);
+      System.out.println(base64Str);
     } else {
       System.out.println("encryption not support");
     }
 
-    byte[] decrypted = cryptoBase.decrypt(key, encrypted);
-    if (decrypted != null) {
-      System.out.println(new String(decrypted));
-    } else {
-      System.out.println("decryption not support");
+    // decrypt it
+    if (base64Str != null) {
+      encrypted = Base64Utils.fromBase64Str(base64Str);
+      byte[] decrypted = cryptoBase.decrypt(key, encrypted);
+      if (decrypted != null) {
+        System.out.println(new String(decrypted));
+      } else {
+        System.out.println("decryption not support");
+      }
     }
   }
 }
