@@ -30,6 +30,10 @@ public class HmacSha256Utils implements CryptoBase{
     return null;
   }
 
+  public byte[] decrypt(String key, byte[] message) {
+    return null;
+  }
+
   public String getAlgorithm() {
     return ALGORITHM;
   }

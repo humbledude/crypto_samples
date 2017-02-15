@@ -40,6 +40,28 @@ public class AES128Utils implements CryptoBase{
     return null;
   }
 
+  public byte[] decrypt(String key, byte[] message) {
+    try {
+      SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes(), ALGORITHM);
+      Cipher cipher = Cipher.getInstance(ALGORITHM);
+
+      cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
+
+      return cipher.doFinal(message);
+
+    } catch (NoSuchAlgorithmException e) {
+      e.printStackTrace();
+    } catch (InvalidKeyException e) {
+      e.printStackTrace();
+    } catch (NoSuchPaddingException e) {
+      e.printStackTrace();
+    } catch (BadPaddingException e) {
+      e.printStackTrace();
+    } catch (IllegalBlockSizeException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
   public String getAlgorithm() {
     return ALGORITHM;
   }

@@ -7,5 +7,6 @@ public interface CryptoBase {
 
   String getAlgorithm();
   byte[] encrypt (String key, byte[] message);
+  byte[] decrypt (String key, byte[] message);
 
 }
